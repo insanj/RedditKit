@@ -25,6 +25,7 @@
 @implementation RKClient (Errors)
 
 const NSInteger RKClientErrorAuthenticationFailed = 1;
+const NSInteger RKClientErrorInvalidOAuthScope = 2;
 
 const NSInteger RKClientErrorInvalidCaptcha = 201;
 const NSInteger RKClientErrorInvalidCSSClassName = 202;
@@ -139,6 +140,24 @@ const NSInteger RKClientErrorTimedOut = 504;
 + (NSError *)authenticationRequiredError
 {
     NSDictionary *userInfo = [RKClient userInfoWithDescription:NSLocalizedStringFromTable(@"Authentication required", @"RedditKit", nil) failureReason:NSLocalizedStringFromTable(@"This method requires you to be signed in.", @"RedditKit", nil)];
+    return [NSError errorWithDomain:RKClientErrorDomain code:RKClientErrorAuthenticationFailed userInfo:userInfo];
+}
+
++ (NSError *)invalidOAuthRequestError
+{
+    NSDictionary *userInfo = [RKClient userInfoWithDescription:@"Invalid OAuth request" failureReason:@"Ensure that you are not attempting to re-use old codes - they are one time use."];
+    return [NSError errorWithDomain:RKClientErrorDomain code:RKClientErrorAuthenticationFailed userInfo:userInfo];
+}
+
++ (NSError *)invalidOAuthGrantError
+{
+    NSDictionary *userInfo = [RKClient userInfoWithDescription:@"Invalid OAuth grant" failureReason:@"Ensure that you are not attempting to re-use old codes - they are one time use."];
+    return [NSError errorWithDomain:RKClientErrorDomain code:RKClientErrorAuthenticationFailed userInfo:userInfo];
+}
+
++ (NSError *)invalidOAuthScopeError
+{
+    NSDictionary *userInfo = [RKClient userInfoWithDescription:@"Invalid OAuth scope" failureReason:@"Your current authorization token does not have a valid scope."];
     return [NSError errorWithDomain:RKClientErrorDomain code:RKClientErrorAuthenticationFailed userInfo:userInfo];
 }
 

@@ -21,7 +21,6 @@
 // THE SOFTWARE.
 
 #import "BrowserViewController.h"
-#import "AuthenticationManager.h"
 
 @interface BrowserViewController ()
 
@@ -33,8 +32,6 @@
 @property (nonatomic, strong) UIBarButtonItem *downvoteItem;
 @property (nonatomic, strong) UIBarButtonItem *saveItem;
 @property (nonatomic, strong) UIBarButtonItem *hideItem;
-
-@property (nonatomic, strong) AuthenticationManager *authenticationManager;
 
 - (UIBarButtonItem *)barButtonItemWithImageNamed:(NSString *)imageName;
 - (void)tappedActionButton:(id)sender;
@@ -50,12 +47,16 @@
 
 - (instancetype)initWithLink:(RKLink *)link
 {
+    _link = link;
+    return [self initWithURL:link.URL];
+}
+
+- (instancetype)initWithURL:(NSURL *)URL
+{
     if (self = [super initWithNibName:nil bundle:nil])
     {
-        self.title = [[link URL] absoluteString];
-        
-        _link = link;
-        _currentURL = link.URL;
+        self.title = [URL absoluteString];
+        _currentURL = URL;
     }
     
     return self;
@@ -79,6 +80,10 @@
 
 - (NSArray *)toolbarItems
 {
+    if (!self.link) {
+        return nil;
+    }
+    
     self.upvoteItem = [self barButtonItemWithImageNamed:@"upvote"];
     self.downvoteItem = [self barButtonItemWithImageNamed:@"downvote"];
     self.saveItem = [self barButtonItemWithImageNamed:@"save"];
@@ -117,11 +122,8 @@
 
 - (void)tappedActionButton:(id)sender
 {
-    if (![[RKClient sharedClient] isSignedIn])
+    if (![[RKClient sharedClient] isAuthenticated])
     {
-        self.authenticationManager = [[AuthenticationManager alloc] init];
-        [[self authenticationManager] showSignInAlertViewWithCompletion:nil];
-        
         return;
     }
     
@@ -199,6 +201,21 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if ([[RKClient sharedClient] handleRedirectURI:request.URL]) {
+        [[RKClient sharedClient] retrieveAccessTokenWithCompletion:^(id object, NSError *error) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(browserViewControllerDidAuthenticate:)]) {
+                [self.delegate browserViewControllerDidAuthenticate:self];
+            }
+        }];
+        
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

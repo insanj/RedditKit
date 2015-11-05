@@ -22,7 +22,6 @@
 
 #import "FrontPageViewController.h"
 
-#import "AuthenticationManager.h"
 #import "BrowserViewController.h"
 #import "LinkTableViewCell.h"
 
@@ -30,7 +29,7 @@
 
 static NSString * const kLinkCellReuseIdentifier = @"kLinkCellReuseIdentifier";
 
-@interface FrontPageViewController () <UIActionSheetDelegate>
+@interface FrontPageViewController () <UIActionSheetDelegate, BrowserViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *links;
 @property (nonatomic, strong) RKPagination *currentPagination;
@@ -39,7 +38,6 @@ static NSString * const kLinkCellReuseIdentifier = @"kLinkCellReuseIdentifier";
 @property (nonatomic, strong) LinkTableViewCell *autoLayoutCell;
 @property (nonatomic, strong) NSMutableDictionary *cellHeights;
 
-@property (nonatomic, strong) AuthenticationManager *authenticationManager;
 @property (nonatomic, strong) UIBarButtonItem *accountButton;
 @property (nonatomic, strong) UIBarButtonItem *actionButton;
 
@@ -121,7 +119,7 @@ static NSString * const kLinkCellReuseIdentifier = @"kLinkCellReuseIdentifier";
 
 - (UIBarButtonItem *)signInBarButtonItem
 {
-    return [[UIBarButtonItem alloc] initWithTitle:@"Sign In" style:UIBarButtonItemStylePlain target:self action:@selector(showSignInAlertView)];
+    return [[UIBarButtonItem alloc] initWithTitle:@"Authenticate" style:UIBarButtonItemStylePlain target:self action:@selector(showAuthenticationPage)];
 }
 
 - (UIBarButtonItem *)signOutBarButtonItem
@@ -129,18 +127,17 @@ static NSString * const kLinkCellReuseIdentifier = @"kLinkCellReuseIdentifier";
     return [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
 }
 
-- (void)showSignInAlertView
+- (void)showAuthenticationPage
 {
-    __weak __typeof(self)weakSelf = self;
-    
-    self.authenticationManager = [[AuthenticationManager alloc] init];
-    
-    [[self authenticationManager] showSignInAlertViewWithCompletion:^{
-        weakSelf.accountButton = [self signOutBarButtonItem];
-        weakSelf.navigationItem.leftBarButtonItem = weakSelf.accountButton;
-        
-        [weakSelf resetLinks];
-    }];
+    [[RKClient sharedClient] authenticateWithClientIdentifier:@"zeZtZ4A8c71d8w" redirectURI:[NSURL URLWithString:@"redditkit://oauth"]];
+
+    RKOAuthScope scope = RKOAuthScopeSubreddits|RKOAuthScopeRead;
+    NSURL *authenticationURL = [[RKClient sharedClient] authenticationURLWithScope:scope];
+    BrowserViewController *browserViewController = [[BrowserViewController alloc] initWithURL:authenticationURL];
+    browserViewController.delegate = self;
+
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:browserViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)updateCell:(LinkTableViewCell *)cell withLink:(RKLink *)link
@@ -294,8 +291,8 @@ static NSString * const kLinkCellReuseIdentifier = @"kLinkCellReuseIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RKLink *link = self.links[indexPath.row];
-    BrowserViewController *browserViewController = [[BrowserViewController alloc] initWithLink:link];
     
+    BrowserViewController *browserViewController = [[BrowserViewController alloc] initWithURL:link.URL];
     [[self navigationController] pushViewController:browserViewController animated:YES];
 }
 
@@ -322,6 +319,18 @@ static NSString * const kLinkCellReuseIdentifier = @"kLinkCellReuseIdentifier";
         self.currentCategory = ((RKSubredditCategory)buttonIndex + 1);
         [self resetLinks];
     }
+}
+
+#pragma mark - BrowserViewControllerDelegate
+
+- (void)browserViewControllerDidAuthenticate:(BrowserViewController *)viewController
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        self.navigationItem.leftBarButtonItem = nil;
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authenticated!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alert show];
+    }];
 }
 
 @end
