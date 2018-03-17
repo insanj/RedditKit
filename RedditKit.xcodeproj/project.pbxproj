@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23282D95205DBD6A00540193 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23282D93205DBD6A00540193 /* AFNetworking.framework */; };
+		23282D96205DBD6A00540193 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23282D94205DBD6A00540193 /* Mantle.framework */; };
 		239335A01FF1D2C20058AE8C /* RKComment+Submarine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2393359E1FF1D2C10058AE8C /* RKComment+Submarine.m */; };
 		239335A11FF1D2CB0058AE8C /* RKComment+Submarine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2393359F1FF1D2C20058AE8C /* RKComment+Submarine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		239335A31FF1D3100058AE8C /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239335A21FF1D30F0058AE8C /* AFNetworking.framework */; };
 		23A10A8F1FF1BF850079E75F /* RedditKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 23A10A8D1FF1BF850079E75F /* RedditKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		23A10AEC1FF1BFEF0079E75F /* RKClient+Comments.h in Headers */ = {isa = PBXBuildFile; fileRef = 23A10A9C1FF1BFEE0079E75F /* RKClient+Comments.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		23A10AED1FF1BFEF0079E75F /* RKClient+Multireddits.h in Headers */ = {isa = PBXBuildFile; fileRef = 23A10A9D1FF1BFEE0079E75F /* RKClient+Multireddits.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -88,13 +89,13 @@
 		23A10B361FF1BFEF0079E75F /* RKMultireddit.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A10AE71FF1BFEE0079E75F /* RKMultireddit.m */; };
 		23A10B371FF1BFEF0079E75F /* NSString+RKHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A10AE91FF1BFEF0079E75F /* NSString+RKHTML.m */; };
 		23A10B381FF1BFEF0079E75F /* NSString+RKHTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 23A10AEA1FF1BFEF0079E75F /* NSString+RKHTML.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23A10B391FF1BFEF0079E75F /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23A10AEB1FF1BFEF0079E75F /* Mantle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23282D93205DBD6A00540193 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		23282D94205DBD6A00540193 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = Carthage/Build/iOS/Mantle.framework; sourceTree = "<group>"; };
 		2393359E1FF1D2C10058AE8C /* RKComment+Submarine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RKComment+Submarine.m"; sourceTree = "<group>"; };
 		2393359F1FF1D2C20058AE8C /* RKComment+Submarine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RKComment+Submarine.h"; sourceTree = "<group>"; };
-		239335A21FF1D30F0058AE8C /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = RedditKit/AFNetworking.framework; sourceTree = "<group>"; };
 		23A10A8A1FF1BF850079E75F /* RedditKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedditKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23A10A8D1FF1BF850079E75F /* RedditKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedditKit.h; sourceTree = "<group>"; };
 		23A10A8E1FF1BF850079E75F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		23A10AE71FF1BFEE0079E75F /* RKMultireddit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKMultireddit.m; sourceTree = "<group>"; };
 		23A10AE91FF1BFEF0079E75F /* NSString+RKHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RKHTML.m"; sourceTree = "<group>"; };
 		23A10AEA1FF1BFEF0079E75F /* NSString+RKHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RKHTML.h"; sourceTree = "<group>"; };
-		23A10AEB1FF1BFEF0079E75F /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mantle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,8 +183,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23A10B391FF1BFEF0079E75F /* Mantle.framework in Frameworks */,
-				239335A31FF1D3100058AE8C /* AFNetworking.framework in Frameworks */,
+				23282D95205DBD6A00540193 /* AFNetworking.framework in Frameworks */,
+				23282D96205DBD6A00540193 /* Mantle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +194,8 @@
 		2371F18F1FF1C09A0005D280 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				239335A21FF1D30F0058AE8C /* AFNetworking.framework */,
+				23282D93205DBD6A00540193 /* AFNetworking.framework */,
+				23282D94205DBD6A00540193 /* Mantle.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,7 +220,6 @@
 		23A10A8C1FF1BF850079E75F /* RedditKit */ = {
 			isa = PBXGroup;
 			children = (
-				23A10AEB1FF1BFEF0079E75F /* Mantle.framework */,
 				23A10AE81FF1BFEF0079E75F /* Categories */,
 				23A10AC51FF1BFEE0079E75F /* Model */,
 				23A10A9B1FF1BFEE0079E75F /* Networking */,
@@ -616,6 +616,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RedditKit",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RedditKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -642,6 +643,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RedditKit",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RedditKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
