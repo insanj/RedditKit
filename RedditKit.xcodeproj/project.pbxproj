@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23282D95205DBD6A00540193 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23282D93205DBD6A00540193 /* AFNetworking.framework */; };
-		23282D96205DBD6A00540193 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23282D94205DBD6A00540193 /* Mantle.framework */; };
+		23282F55205DC2D600540193 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23282F53205DC2D600540193 /* AFNetworking.framework */; };
+		23282F56205DC2D600540193 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23282F54205DC2D600540193 /* Mantle.framework */; };
 		239335A01FF1D2C20058AE8C /* RKComment+Submarine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2393359E1FF1D2C10058AE8C /* RKComment+Submarine.m */; };
 		239335A11FF1D2CB0058AE8C /* RKComment+Submarine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2393359F1FF1D2C20058AE8C /* RKComment+Submarine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		23A10A8F1FF1BF850079E75F /* RedditKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 23A10A8D1FF1BF850079E75F /* RedditKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -92,8 +92,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23282D93205DBD6A00540193 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
-		23282D94205DBD6A00540193 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = Carthage/Build/iOS/Mantle.framework; sourceTree = "<group>"; };
+		23282F53205DC2D600540193 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		23282F54205DC2D600540193 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = Carthage/Build/iOS/Mantle.framework; sourceTree = "<group>"; };
 		2393359E1FF1D2C10058AE8C /* RKComment+Submarine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RKComment+Submarine.m"; sourceTree = "<group>"; };
 		2393359F1FF1D2C20058AE8C /* RKComment+Submarine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RKComment+Submarine.h"; sourceTree = "<group>"; };
 		23A10A8A1FF1BF850079E75F /* RedditKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RedditKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,8 +183,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23282D95205DBD6A00540193 /* AFNetworking.framework in Frameworks */,
-				23282D96205DBD6A00540193 /* Mantle.framework in Frameworks */,
+				23282F55205DC2D600540193 /* AFNetworking.framework in Frameworks */,
+				23282F56205DC2D600540193 /* Mantle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,8 +194,8 @@
 		2371F18F1FF1C09A0005D280 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				23282D93205DBD6A00540193 /* AFNetworking.framework */,
-				23282D94205DBD6A00540193 /* Mantle.framework */,
+				23282F53205DC2D600540193 /* AFNetworking.framework */,
+				23282F54205DC2D600540193 /* Mantle.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

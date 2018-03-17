@@ -1,2 +1,2 @@
-github "AFNetworking/AFNetworking" "3.2.0"
 github "Mantle/Mantle" "2.1.0"
+github "insanj/AFNetworking" "27d757291fc2a389936be3fefd562132ace3694f"
